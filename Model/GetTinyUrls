@@ -1,0 +1,49 @@
+<?php 
+/**
+  * @category Model
+  * @author Vrushali Kumbhakarna
+  * @since 18/01/2018
+  * @purpose Rest API of timezone
+  * @Story  : #NEWC3-94
+  **/
+namespace App\Http\Models\Common;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
+class GetTinyUrls extends Model
+{
+	protected $table_name;
+
+	/**
+    * Constructor of class will be used for declarations as well as initialization
+    * @author Vrushali Kumbhakarna
+    * @since 18-01-2018
+    */
+    public function __construct()
+    {
+    	$this->table_name = 'test_short_urls';
+    }
+
+    /**
+    * This function will be used to get single or multiple records
+    * @author Vrushali Kumbhakarna
+    * @since 18-01-2018
+    * @param array $params
+    * @return $result
+    */
+    public function getData($params)
+	{
+        $result = DB::table($this->table_name)
+					->select('long_url')
+                    ->where('shortcode',$params)
+                    ->get();                    
+		return $result;
+    }
+    public function insertData($params = array())
+	{
+        $id = DB::table($this->table_name)->insertGetId($params);
+		return $id;  
+    }
+}
+?>
