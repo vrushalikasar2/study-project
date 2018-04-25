@@ -3,9 +3,8 @@
 /**
   * @category Controller
   * @author Vrushali Kumbhakarna
-  * @since 18-01-2018
-  * @purpose Rest API of timezone
-  * @Story  : #NEWC3-94
+  * @since 25-05-2018
+  * @purpose shorten url
   **/
 
 namespace App\Http\Controllers\Common; 
@@ -15,26 +14,25 @@ use App\Http\Models\Common\GetTinyUrls as GetTinyUrlsModel;
 
 class GetTinyUrl extends Controller
 {
-	/**
+    /**
     * Constructor of class will be used for declarations as well as initialization
     * @author Vrushali Kumbhakarna
-    * @since 18-01-2018
+    * @since 25-04-2018
     * @param array $request
     */
-	public function __construct(Request $request)
+    public function __construct(Request $request)
     {
         $this->request = $request;
     }
 
     /**
-    * This function will be used to get single or multiple records  ...gets the data from a URL  
+    * This function will be used to insert long url and short code into database and return short url
     * @author Vrushali Kumbhakarna
-    * @since 18-01-2018
+    * @since 25-04-2018
     * @return $response
     */
-    public function insert()
-	{        
-        
+     public function insert()
+     {       
         $_GetTinyUrlsModel = new GetTinyUrlsModel;
         $insert_data = [];
         $url = $this->request->input('url');
@@ -52,6 +50,12 @@ class GetTinyUrl extends Controller
             return response()->json($response);
         }              
     } 
+   /**
+    * This function will be used to get short url from view and return long url using database
+    * @author Vrushali Kumbhakarna
+    * @since 25-04-2018
+    * @return $result
+    */
     public function get()
 	{
         $data = $this->request->all();
