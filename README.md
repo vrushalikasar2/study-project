@@ -1,2 +1,0 @@
-# study-project
-study-project
