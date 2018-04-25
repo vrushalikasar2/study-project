@@ -3,7 +3,7 @@
 /**
   * @category Controller
   * @author Vrushali Kumbhakarna
-  * @since 25-05-2018
+  * @since 24-04-2018
   * @purpose shorten url
   **/
 
@@ -17,7 +17,7 @@ class GetTinyUrl extends Controller
     /**
     * Constructor of class will be used for declarations as well as initialization
     * @author Vrushali Kumbhakarna
-    * @since 25-04-2018
+    * @since 24-04-2018
     * @param array $request
     */
     public function __construct(Request $request)
@@ -28,7 +28,7 @@ class GetTinyUrl extends Controller
     /**
     * This function will be used to insert long url and short code into database and return short url
     * @author Vrushali Kumbhakarna
-    * @since 25-04-2018
+    * @since 24-04-2018
     * @return $response
     */
      public function insert()
@@ -53,7 +53,7 @@ class GetTinyUrl extends Controller
    /**
     * This function will be used to get short url from view and return long url using database
     * @author Vrushali Kumbhakarna
-    * @since 25-04-2018
+    * @since 24-04-2018
     * @return $result
     */
     public function get()
