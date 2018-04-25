@@ -1,4 +1,5 @@
-# Steps how to Shorten URL
+Steps how to Shorten URL
+
 Step 1: How to convert the long URL to a shortened URL
         1> Get Long URL.
         2>Create short key using  
