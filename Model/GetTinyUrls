@@ -2,9 +2,8 @@
 /**
   * @category Model
   * @author Vrushali Kumbhakarna
-  * @since 24th-04-2018
-  * @purpose Rest API of timezone
-  * @Story  : #NEWC3-94
+  * @since 24-04-2018
+  * @purpose Shorten URL
   **/
 namespace App\Http\Models\Common;
 
@@ -18,7 +17,7 @@ class GetTinyUrls extends Model
 	/**
     * Constructor of class will be used for declarations as well as initialization
     * @author Vrushali Kumbhakarna
-    * @since 18-01-2018
+    * @since 24-04-2018
     */
     public function __construct()
     {
@@ -26,22 +25,29 @@ class GetTinyUrls extends Model
     }
 
     /**
-    * This function will be used to get single or multiple records
+    * This function will be used to get long url using short code
     * @author Vrushali Kumbhakarna
-    * @since 18-01-2018
+    * @since 24-04-2018
     * @param array $params
     * @return $result
     */
     public function getData($params)
-	{
+    {
         $result = DB::table($this->table_name)
-					->select('long_url')
+		    ->select('long_url')
                     ->where('shortcode',$params)
                     ->get();                    
 		return $result;
     }
+    /**
+    * This function will be used to insert long url and short code
+    * @author Vrushali Kumbhakarna
+    * @since 24-04-2018
+    * @param array $params
+    * @return $id
+    */
     public function insertData($params = array())
-	{
+    {
         $id = DB::table($this->table_name)->insertGetId($params);
 		return $id;  
     }
