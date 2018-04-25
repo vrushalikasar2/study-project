@@ -1,0 +1,46 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
+export default class App extends Component {
+    componentDidMount() {
+        let me = this;
+        $('#form-save-button').on('click', (event) => {
+            me.getTinyUrl($('#form-input').val());            
+        });
+    }
+    getTinyUrl(url) {
+        let me = this;
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    url: url                    
+                },
+                url: 'http://localhost:8088/GetTinyUrl',
+                success: function (response) {
+                    console.log('jjj');
+                    $('#short-url').css('display', 'block');
+                    $('#short-url').val(response.data);
+                }
+            });
+        }    
+    render() {
+        return (
+            <div class="card" style={{ height: '230px', padding: "10px", margin: "50px" }}>
+                <div class="card-header">
+                    <h4>Simplify Your Links</h4>
+                </div>
+                <div class="card-body bg-primary text-white" height={'158px'} >
+                    <form class="form-inline" style={{ margin: "15px" }} >
+                        <input class="form-control mr-sm-2" type="search" id="form-input" placeholder="Your original URL here" aria-label="Search" style={{ height: '36px', width: "56%" }} />
+                        <button type="button" id="form-save-button" class="btn btn-secondary" style={{ height: '36px', width: "11%" }}>SHORTEN URL</button>                                                
+                        <input type='text' id='short-url' style={{ display: "none", marginLeft:"18px", height: '36px', width: "20%"}} />
+                    </form>
+                    <p class="card-text" style={{ marginLeft: "16px" }}>You put a URL and get back a short URL. When you enter short url then it will redirect to Full URL and you will get you result.</p>
+                </div>                
+            </div>
+           
+        )
+    }
+}
+
